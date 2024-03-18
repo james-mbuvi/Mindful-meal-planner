@@ -4,6 +4,7 @@ import Signup from "./pages/signup/Signup";
 import Homepage from './pages/homepage/Homepage';
 import { AuthContextProvider } from './context/AuthContext';
 
+
 function App() {
   return (
     <div>
@@ -15,10 +16,11 @@ function App() {
 
 
          </Routes>
-      </AuthContextProvider>
-      
+      </AuthContextProvider> 
     </div>
   );
 }
 
 export default App;
+
+   
