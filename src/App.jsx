@@ -5,6 +5,7 @@ import Homepage from './pages/homepage/Homepage';
 import { AuthContextProvider } from './context/AuthContext';
 import Preferenes from './pages/preferences/Preferenes';
 
+
 function App() {
   return (
     <div>
@@ -17,10 +18,11 @@ function App() {
           <Route path='/preferences' element = {<Preferenes/>}/>
 
          </Routes>
-      </AuthContextProvider>
-      
+      </AuthContextProvider> 
     </div>
   );
 }
 
 export default App;
+
+   
