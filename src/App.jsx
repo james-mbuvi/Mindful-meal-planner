@@ -8,6 +8,7 @@ import Preferenes from './pages/preferences/Preferenes';
 function App() {
   return (
     <div>
+      
       <AuthContextProvider>
         <Routes>
           <Route path = '/' element={<Login />}/>
