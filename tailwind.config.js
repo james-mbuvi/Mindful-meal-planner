@@ -7,12 +7,10 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
-      fontFamily: {
-        normal: ["Inter"]
-      },
       colors: {
-        pickle : "#597D35",
-        dm: "#2D2E2E"
+        'pickle': "#597D35",
+        'pickle-lg': '#73a145'
+        'dm': "#2D2E2E"
     },
   },
   plugins: [],

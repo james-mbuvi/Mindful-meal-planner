@@ -1,5 +1,5 @@
 import logo from "../../assets/logo.png";
-import loginImg from "../../assets/loginImg.jpg";
+import login from "../../assets/login.jpg";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,7 +15,7 @@ export default function Login() {
     return (
       <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
         <div className='hidden sm:block'>
-          <img className='w-full h-full object-cover' src={loginImg} alt="Login Background" />
+          <img className='w-full h-screen object-cover' src={login} alt="Login Background" />
         </div>
   
         <div className='bg-white flex flex-col justify-center'>
@@ -46,21 +46,15 @@ export default function Login() {
             </div>
   
             <div className="flex justify-center">
-              <button className="border w-full my-5 py-2 bg-lime-800 hover:bg-lime-600 text-white px-3 h-14">LOG IN</button>
+              <button className="border w-full my-5 py-2 bg-pickle  hover:bg-pickle-lg text-white px-3 h-14">LOG IN</button>
             </div>
   
-            <div className=" flex justify-between font-light">
-               <p className="flex items-center mr-2"><input type="checkbox" />Remember me?</p>
-               <p>forgot password</p>
+            <div className=" flex justify-end font-light hover:cursor-pointer">
+               <p>Forgot password</p>
+            </div>
 
-            </div>
-  
-            <div className="flex justify-center mt-10 font-light">
-              <p>SIGN IN WITH <a href="https://www.google.com"><strong>GOOGLE</strong></a>.</p>
-            </div>
-  
             <div>
-              <p className="flex justify-center mt-8 font-light">Don't have an account?<strong><Link to="../signup" className="font-bold">Sign up for free</Link></strong></p>
+              <p className="flex justify-center mt-8 font-light">Don't have an account?<strong className="text-pickle  hover:text-pickle-lg"><Link to="../signup" className="font-bold">Sign up for free</Link></strong></p>
             </div>
           </form>
         </div>
