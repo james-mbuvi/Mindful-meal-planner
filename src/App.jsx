@@ -7,6 +7,7 @@ import { AuthContextProvider } from './context/AuthContext';
 function App() {
   return (
     <div>
+      
       <AuthContextProvider>
         <Routes>
           <Route path = '/' element={<Login />}/>
