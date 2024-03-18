@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'pickle': "#597D35",
+        'pickle-lg': '#73a145'
+      }
+    },
   },
   plugins: [],
 }
