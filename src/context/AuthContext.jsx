@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
   updateProfile
 } from 'firebase/auth';
-import {auth} from '../firebase';
+import { auth } from '../firebase';
 
 const UserContext = createContext();
 
@@ -19,9 +19,16 @@ export const AuthContextProvider = ({ children }) => {
     return userCredential;
   };
 
-  const signIn = (email, password) =>  {
-    return signInWithEmailAndPassword(auth, email, password)
-  }
+  const signIn = async (email, password) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      return userCredential.user;
+    } catch (error) {
+      // Handle error appropriately, for example:
+      console.error("Error signing in:", error.message);
+      throw error; // Rethrow the error to propagate it upwards
+    }
+  };
 
   const logout = () => {
     return signOut(auth)
