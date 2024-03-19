@@ -1,8 +1,7 @@
-
 import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 
-function Preferenes() {
+export const Preferences = () => {
   const [preferences, setPreferences] = useState({
     dietary_preference: [],
     dietary_restriction: [],
@@ -253,5 +252,3 @@ function Preferenes() {
     </div>
   );
 }
-
-
