@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -11,7 +12,8 @@ export default {
         'pickle-lg': '#73a145',
         'dm':'#2D2E2E'
       }
-    },
+
   },
   plugins: [],
+  }
 }

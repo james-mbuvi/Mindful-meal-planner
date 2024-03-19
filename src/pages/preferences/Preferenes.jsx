@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 
@@ -253,4 +254,4 @@ function Preferenes() {
   );
 }
 
-export default Preferenes;
+
