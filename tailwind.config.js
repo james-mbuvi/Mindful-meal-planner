@@ -8,7 +8,8 @@ export default {
     extend: {
       colors: {
         'pickle': "#597D35",
-        'pickle-lg': '#73a145'
+        'pickle-lg': '#73a145',
+        'dm':'#2D2E2E'
       }
     },
   },
