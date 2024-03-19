@@ -7,7 +7,7 @@ import logo from "../../assets/logo.png";
 import darkmode from "../../assets/darkmode.png";
 
 const navigation = [
-  { name: "Home", href: "/private", current: false },
+  { name: "Home", href: "/homepage", current: false },
   { name: "My Meal Plan", href: "MyMealPlan", current: false },
 ];
 // set dark theme
@@ -16,17 +16,18 @@ function classNames(...classes) {
 }
 
 export const Navbar = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
   useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
     } else {
-      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove('dark');
     }
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const handleThemeSwitch = () => setTheme(theme === "dark" ? "light" : "dark");
+  const handleThemeSwitch = () => setTheme(theme === 'dark' ? 'light' : 'dark');
 
   return (
     <Disclosure as="nav" className="pb-3 dark:bg-dm">
