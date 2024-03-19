@@ -15,7 +15,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar() {
+export const Navbar = () => {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
