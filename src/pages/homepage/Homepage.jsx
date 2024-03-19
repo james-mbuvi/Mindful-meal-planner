@@ -1,21 +1,22 @@
 import { LuSalad } from "react-icons/lu";
 import { TbTargetArrow } from "react-icons/tb";
 import { BiSolidSearchAlt2 } from "react-icons/bi";
+import home from "../../assets/home.jpg"
 
 export default function Homepage() {
     return (
-        <div>
+        <div className="px-14 ">
             <div className="flex">
-                <img src="food-image.jpg" alt="Food" />
-                <div>
-                    <h1>From chaotic kitchen to culinary Bliss:</h1>
-                    <p>Let our Meal Planner Revolutionize your Routine!</p>
-                    <button>Get Started</button>
+                <div className="flex flex-col">
+                    <h1 className="text-[40px]">From chaotic kitchen to culinary Bliss:</h1>
+                    <p className="text-[25px]">Let our Meal Planner Revolutionize your<br />Routine!</p>
+                    <button className="text-[18px] bg-pickle text-white px-">Get Started</button>
                 </div>
+                <img src={ home } alt="Bg"  className="w-[400px] h-[400px] rounded-lg"/>
             </div>
-            <div className="flex flex-row">
+            <div className="flex flex-row h-">
                 <div className="">
-                    <LuSalad />
+                    <LuSalad className=""/>
                     <p>Nutritional Convenience</p>
                     <p>Enjoy the ease of planning balanced meals tailored to your nutritional needs...</p>
                 </div>
@@ -31,5 +32,5 @@ export default function Homepage() {
                 </div>
             </div>
         </div>
-    );
-}
+    )
+};
