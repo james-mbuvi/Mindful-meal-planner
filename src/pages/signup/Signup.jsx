@@ -1,7 +1,7 @@
 import logo from "../../assets/logo.png";
 import signup from "../../assets/signup.jpg";
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { UserAuth } from "../../context/AuthContext";
@@ -17,12 +17,14 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { createUser } = UserAuth();
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     try {
       await createUser(email, password, name);
+      navigate('/')
     } catch (e) {
       setError(e.message);
       console.log(e.message);
@@ -73,7 +75,7 @@ export default function SignUp() {
       </div>
 
       <div>
-        <p className="flex justify-right mt-8 font-light">Already have an account?<strong><Link to="/" className="font-bold">Log In</Link></strong></p>
+        <p className="flex justify-right mt-8 font-light">Already have an account?<strong className="text-pickle hover:text-pickle-lg"><Link to="/" className="font-bold">Log In</Link></strong></p>
       </div>
     </form>
   </div>
