@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
-import Homepage from './pages/homepage/Homepage';
+import { Homepage } from './pages/homepage/Homepage';
 import { AuthContextProvider } from './context/AuthContext';
 import ProtectedRoute from './ProtectedRoute';
 import { Navbar } from './components/navbar/Navbar';
