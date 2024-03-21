@@ -40,6 +40,20 @@ export const Navbar = () => {
     }
   };
 
+  // Logout Function
+  const { logout } = UserAuth();
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+      console.log('You are logged out')
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
   return (
     <Disclosure as="nav" className="pb-3 dark:bg-dm">
       {({ open }) => (
