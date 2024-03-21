@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import { Homepage } from './pages/homepage/Homepage';
@@ -7,11 +7,12 @@ import ProtectedRoute from './ProtectedRoute';
 import { Navbar } from './components/navbar/Navbar';
 
 function App() {
+  const location = useLocation();
+
   return (
     <div>
-      
       <AuthContextProvider>
-        <Navbar />
+        {location.pathname !== '/' && location.pathname !== '/signup' && <Navbar />}
         <Routes>
           <Route path='/' element={<Login />} />
           <Route path="/signup" element={<Signup />} />
