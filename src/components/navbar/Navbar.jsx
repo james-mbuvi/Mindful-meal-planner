@@ -1,10 +1,11 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import logo from "../../assets/logo.png";
 import darkmode from "../../assets/darkmode.png";
+import { UserAuth } from "../../context/AuthContext";
 
 const navigation = [
   { name: "Home", href: "/private", current: false },
@@ -27,6 +28,20 @@ export const Navbar = () => {
   }, [theme]);
 
   const handleThemeSwitch = () => setTheme(theme === "dark" ? "light" : "dark");
+
+  // Logout Function
+  const { logout } = UserAuth();
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+      console.log('You are logged out')
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
 
   return (
     <Disclosure as="nav" className="pb-3 dark:bg-dm">
@@ -76,7 +91,7 @@ export const Navbar = () => {
                 <Menu as="div" className="relative ">
                   <div className="flex  space-x-4 ">
                     <div>
-                      <button className="mt-5 px-4 py-1 rounded-sm text-sm  dark:text-white  bg-pickle text-white ">
+                      <button onClick= {handleLogout} className="mt-5 px-4 py-1 rounded-sm text-sm  dark:text-white  bg-pickle text-white ">
                         Log out
                       </button>
                     </div>
