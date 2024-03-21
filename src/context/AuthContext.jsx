@@ -4,7 +4,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  updateProfile
+  updateProfile,
+  sendPasswordResetEmail
 } from 'firebase/auth';
 import { auth } from '../firebase';
 
@@ -24,19 +25,26 @@ export const AuthContextProvider = ({ children }) => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       return userCredential.user;
     } catch (error) {
-      // Handle error appropriately, for example:
       console.error("Error signing in:", error.message);
-      throw error; // Rethrow the error to propagate it upwards
+      throw error;
     }
   };
 
   const logout = () => {
     return signOut(auth)
-  }
+}
+  const sendPasswordResetEmail = async (email) => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      console.log("Password reset email sent");
+    } catch (error) {
+      console.error("Error sending password reset email:", error.message);
+      throw error;
+    }
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
       setUser(currentUser);
     });
     return () => {
@@ -45,7 +53,7 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ createUser, user, logout, signIn }}>
+    <UserContext.Provider value={{ createUser, user, logout, signIn, sendPasswordResetEmail }}>
       {children}
     </UserContext.Provider>
   );
