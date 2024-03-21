@@ -26,20 +26,8 @@ export const Navbar = () => {
 
   const handleThemeSwitch = () => setTheme(theme === 'dark' ? 'light' : 'dark');
 
-  // Logout Function
-  const { logout } = UserAuth();
-  const navigate = useNavigate()
-
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate('/');
-      console.log('You are logged out')
-    } catch (e) {
-      console.log(e.message);
-    }
-  };
-
+ 
+  
   // Logout Function
   const { logout } = UserAuth();
   const navigate = useNavigate()
