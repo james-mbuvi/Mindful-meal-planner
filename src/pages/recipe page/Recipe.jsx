@@ -2,11 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-function RecipePage() {
+export const RecipePage = () => {
   const { mealId } = useParams();
   const [meal, setMeal] = useState(null);
 
-    // Fetch meal data from API based on mealId
+  // Fetch meal data from API based on mealId
+  useEffect(() => {
+    fetch("http://localhost:8000/meal/")
+      .then((resp) => resp.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div>

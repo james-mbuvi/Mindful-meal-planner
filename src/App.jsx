@@ -5,6 +5,8 @@ import { Homepage } from './pages/homepage/Homepage';
 import { AuthContextProvider } from './context/AuthContext';
 import ProtectedRoute from './ProtectedRoute';
 import { Navbar } from './components/navbar/Navbar';
+import { Mealplanner } from './pages/Mealplan/Mealplan';
+
 
 function App() {
   const location = useLocation();
@@ -12,15 +14,25 @@ function App() {
   return (
     <div>
       <AuthContextProvider>
-        {location.pathname !== '/' && location.pathname !== '/signup' && <Navbar />}
+        {location.pathname !== "/" && location.pathname !== "/signup" && (
+          <Navbar />
+        )}
         <Routes>
-          <Route path='/' element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route
-            path='/homepage'
+            path="/homepage"
             element={
               <ProtectedRoute>
                 <Homepage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/MyMealPlan"
+            element={
+              <ProtectedRoute>
+                <Mealplanner/>
               </ProtectedRoute>
             }
           />
