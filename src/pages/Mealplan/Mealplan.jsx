@@ -69,7 +69,7 @@ export const Mealplanner = () => {
         <div className="dark:bg-dm text-dm dark:text-white ">
             <h1 className="font-bold text-center text-2xl underline">My Meal Plan</h1>
             <Days_of_the_week days={daysOfWeek} onClick={handleDayClick} />
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
                 {mealTime.map(time => (
                     <div key={time} className='text-center '>
                         <h2>{time}</h2>
