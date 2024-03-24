@@ -1,4 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import { Homepage } from './pages/homepage/Homepage';
@@ -12,8 +13,10 @@ import { Recipe } from './pages/recipes/Recipe';
 function App() {
   const location = useLocation();
 
+
   return (
     <div>
+      
       <AuthContextProvider>
         {location.pathname !== "/" && location.pathname !== "/signup" && (
           <Navbar />
