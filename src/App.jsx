@@ -6,6 +6,7 @@ import { AuthContextProvider } from './context/AuthContext';
 import ProtectedRoute from './ProtectedRoute';
 import { Navbar } from './components/navbar/Navbar';
 import { Mealplanner } from './pages/Mealplan/Mealplan';
+import { Recipe } from './pages/recipes/Recipe';
 
 
 function App() {
@@ -33,6 +34,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Mealplanner/>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/recipe/:id"
+            element={
+              <ProtectedRoute>
+                <Recipe />
               </ProtectedRoute>
             }
           />
