@@ -27,7 +27,7 @@ export const Recipe = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row  dark:bg-dm text-dm dark:text-white px-2 m-1">
+    <div className="flex flex-col lg:flex-row gap-[20px] dark:bg-dm text-dm dark:text-white px-2 m-1">
 
       <div className="flex flex-col w-full">
         <div>
