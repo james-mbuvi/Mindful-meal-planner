@@ -16,7 +16,7 @@ export const MealCard = ({ meal }) => {
         <p className="text-sm md:text-base lg:text-lg">
           Serving Size: {meal.serves}
         </p>
-        <Link to={`/recipe/${meal.id}`} className="hover:cursor-pointer">Get Recipe</Link>
+        <Link to={`/recipe/${meal.id}`} className="hover:cursor-pointer bg-pickle p-3 my-3 py-2 rounded-xl">Get Recipe</Link>
       </div>
     </div>
   );
