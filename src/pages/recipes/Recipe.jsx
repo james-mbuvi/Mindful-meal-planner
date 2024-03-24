@@ -27,33 +27,39 @@ export const Recipe = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row  dark:bg-dm text-dm dark:text-white">
-      
-      <div className="lg:w-1/2 p-6">
-        <h1 className="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-200">{recipe.title}</h1>
-        <h2 className="text-xl font-bold mb-2">Ingredients:</h2>
-        <ul className="list-disc list-inside mb-4">
-          {recipe.ingredients.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
-          ))}
-        </ul>
-        <h2 className="text-xl font-bold mb-2">Recipe:</h2>
-        <ol className="list-decimal list-inside mb-4">
-          {recipe.recipe.map((step, index) => (
-            <li classname="mb-3"key={index}>{step}</li>
-          ))}
-        </ol>
-        <div className="bg-pickle rounded-lg p-4">
-        <h2 className="text-xl font-bold mb-2 mt-3">Nutritional Values</h2>
-        
+    <div className="flex flex-col lg:flex-row  dark:bg-dm text-dm dark:text-white px-2 m-1">
+
+      <div className="flex flex-col w-full">
+        <div>
+          <h1 className="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-200">{recipe.title}</h1>
+          <h2 className="text-xl font-bold mb-2">Ingredients:</h2>
+          <ul className="list-disc list-inside mb-4">
+            {recipe.ingredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 className="text-xl font-bold mb-2">Recipe:</h2>
+          <ol className="list-decimal list-inside mb-4">
+            {recipe.recipe.map((step, index) => (
+              <li className="mb-3" key={index}>{step}</li>
+            ))}
+          </ol>
+        </div>
+      </div>
+      <div className='flex flex-col w-full'>
+        <div className="w-full h-1/2">
+          <img src={recipe.image} alt={recipe.title} className="w-full h-full object-cover" />
+        </div>
+        <div className="bg-pickle rounded-lg p-4 mt-2">
+          <h2 className="text-xl font-bold mb-2 mt-3">Nutritional Values</h2>
+
           <p><span className="font-bold">Calories:</span> {recipe.nutrition.Calories}</p>
           <p><span className="font-bold">Fat:</span> {recipe.nutrition.Fat}</p>
           <p><span className="font-bold">Carbs:</span> {recipe.nutrition.Carbs}</p>
           <p><span className="font-bold">Protein:</span> {recipe.nutrition.Protein}</p>
         </div>
-      </div>
-      <div className="w-1/2 ">
-        <img src={recipe.image} alt={recipe.title} className="w-full" />
       </div>
     </div>
   );
