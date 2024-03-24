@@ -1,65 +1,79 @@
-import React, {useState, useEffect} from 'react'
-import Days_of_the_week from '../../components/Days_of_the_week';
+import { useState, useEffect } from 'react'
+import { Days_of_the_week } from '../../components/Days_of_the_week';
 import { MealCard } from '../../components/Mealcard';
 import { Link } from 'react-router-dom';
 
-
-
 export const Mealplanner = () => {
-     const [meals, setMeals] = useState([]);
-     const [error, setError] = useState(null);
-
-     useEffect(() => {
-       const fetchMeals = async () => {
-         try {
-           const response = await fetch("http://localhost:8000/meal/");
-           if (!response.ok) {
-             throw new Error("Failed to fetch data");
-           }
-           const data = await response.json();
-           setMeals(data);
-         } catch (error) {
-           setError(error.message);
-         }
-       };
-
-       fetchMeals();
-     }, []);
-
-      if (error) {
-        return <div>Error: {error}</div>;
-      }
-    
-   
-
+    const [meals, setMeals] = useState([]);
+    const [error, setError] = useState(null);
     const [selectedDay, setSelectedDay] = useState(null);
 
+    useEffect(() => {
+        const fetchMeals = async () => {
+            try {
+                const response = await fetch("http://localhost:8000/meal/");
+                if (!response.ok) {
+                    throw new Error("Failed to fetch data");
+                }
+                const data = await response.json();
+                setMeals(data);
+            } catch (error) {
+                setError(error.message);
+            }
+        };
+
+        fetchMeals();
+    }, []);
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
     const daysOfWeek = ["MON", "TUE", "WED", "THUR", "FRI", "SAT", "SUN"];
-      const handleDayClick = (day) => {
+    const handleDayClick = (day) => {
         setSelectedDay(day);
-        
-      };
-  const mealTime = ["Morning", "Lunch", "Super"]
-  const filteredMeals = meals.filter(meal => mealTime.includes(meal.time));
-   
-  return (
-    <div className="dark:bg-dm text-dm dark:text-white">
-      <h1 className="font-bold text-center text-2xl underline text-lg">My Meal Plan</h1>
-      <Days_of_the_week days={daysOfWeek} onClick={handleDayClick} />
-      <div className="grid grid-cols-3 gap-3">
-        <Link to="/Recipe">
-          {meals.map((meal) => (
-            <MealCard key={meal.id} meal={meal} />
-          ))}
-        </Link>
-      </div>
-    </div>
-  );
+    };
+
+    const mealTime = ["Morning", "Lunch", "Dinner"];
+
+    // Function to shuffle an array
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    // Shuffle meals and distribute them across days and times
+    const shuffledMeals = shuffle(meals);
+    const mealsByDay = Array.from({ length: daysOfWeek.length }, (_, dayIndex) => {
+        return mealTime.reduce((acc, time, timeIndex) => {
+            const mealIndex = dayIndex * mealTime.length + timeIndex;
+            if (shuffledMeals[mealIndex]) {
+                acc[time] = [shuffledMeals[mealIndex]];
+            }
+            return acc;
+        }, {});
+    });
+
+    // Get meals for the selected day
+    const filteredMeals = mealsByDay[selectedDay ? daysOfWeek.indexOf(selectedDay) : 0];
+
+    return (
+        <div className="dark:bg-dm text-dm dark:text-white">
+            <h1 className="font-bold text-center text-2xl underline text-lg">My Meal Plan</h1>
+            <Days_of_the_week days={daysOfWeek} onClick={handleDayClick} />
+            <div className="grid grid-cols-3 gap-3">
+                {mealTime.map(time => (
+                    <div key={time}>
+                        <h2>{time}</h2>
+                        {filteredMeals[time] && filteredMeals[time].map((meal) => (
+                            <MealCard key={meal.id} meal={meal} />
+                        ))}
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 }
-
-//repsonsivness of the days of the week
-// generating an ordered meal plan 
-//generating only 3 meal plans and not everything
-// the meal plans to be same width as the days of the week
-// generating random meal plans for different days
-

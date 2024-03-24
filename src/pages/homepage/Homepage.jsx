@@ -6,14 +6,12 @@ import home from "../../assets/home.jpg"
 import { ResponsiveText } from "./ResponsiveText";
 import { Preferences } from "../preferences/Preferences";
 
-
-
 export const Homepage = () => {
-    const [showPreferences, setShowPreferences] = useState(false);
+    // const [showPreferences, setShowPreferences] = useState(false);
 
-    if (showPreferences) {
-        return <Preferences onClose={() => setShowPreferences(false)} />;
-    }
+    // if (showPreferences) {
+    //     return <Preferences onClose={() => setShowPreferences(false)} />;
+    // }
 
     return (
         <div className="px-6 md:px-12 lg:px-[120px] h-screen flex flex-col bg-white dark:bg-dm">
@@ -25,14 +23,14 @@ export const Homepage = () => {
                     <div className="flex justify-center mt-5">
                         <button
                             className="text-lg bg-pickle hover:bg-pickle-lg text-white py-2 px-4 w-48 rounded-lg h-12 font-normal transition-colors duration-200 ease-in-out"
-                            onClick={() => setShowPreferences(true)}
+                            // onClick={() => setShowPreferences(true)}
                         >
                             Get Started
                         </button>
 
-                        {showPreferences && (
+                        {/* {showPreferences && (
                             <Preferences onClose={() => setShowPreferences(false)} />
-                        )}
+                        )} */}
                     </div>
                 </div>
                 <img src={home} alt="Bg" className="hidden md:block md:w-96 md:h-80 lg:w-[500px] lg:h-[500px] rounded-lg mt-6 md:mt-0" />

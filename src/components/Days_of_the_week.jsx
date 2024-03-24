@@ -1,21 +1,17 @@
-import React from "react";
-
-const Weekdays = ({ day }) => {
+export const Weekdays = ({ day, onClick }) => {
   return (
-    <div className="bg-slate-700 p-9 py-3 rounded-full inline-block cursor-pointer text-white">
+    <div className="bg-slate-700 p-9 py-3 rounded-full inline-block cursor-pointer text-white" onClick={() => onClick(day)}>
       {day}
     </div>
   );
 };
 
-const Days_of_the_week = ({ days, onClick }) => {
+export const Days_of_the_week = ({ days, onClick }) => {
   return (
     <div className="space-x-6 text-center  text-xl mb-4  justify-stretch mt-4 ">
       {days.map((day, index) => (
-        <Weekdays key={index} day={day}/>
+        <Weekdays key={index} day={day} onClick={onClick} />
       ))}
     </div>
   );
 };
-
-export default Days_of_the_week;
