@@ -43,7 +43,8 @@ export const Navbar = () => {
   };
 
   return (
-    <Disclosure as="nav" className="pb-3 dark:bg-dm">
+   <div className="dark:bg-dm">
+     <Disclosure as="nav" className="pb-3 drop-shadow-xl  dark:bg-dm rounded-b-lg ">
       {({ open }) => (
         <>
           <div className="">
@@ -139,5 +140,6 @@ export const Navbar = () => {
         </>
       )}
     </Disclosure>
+   </div>
   );
 }

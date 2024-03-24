@@ -14,7 +14,7 @@ export const Homepage = () => {
     // }
 
     return (
-        <div className="px-6 md:px-12 lg:px-[120px] h-screen flex flex-col bg-white dark:bg-dm">
+        <div className="px-6 md:px-12 lg:px-[120px] h-screen flex flex-col pt-5 bg-white dark:bg-dm ">
             <div className="flex flex-col md:flex-row justify-evenly font-sans">
                 <div className="flex flex-col justify-center space-y-4">
                     <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-dm dark:text-white">From chaotic kitchen to culinary Bliss:</h1>
@@ -22,7 +22,7 @@ export const Homepage = () => {
                     <p className="text-lg text-center font-medium text-dm dark:text-white">Click to get started! to set your meal preferences</p>
                     <div className="flex justify-center mt-5">
                         <button
-                            className="text-lg bg-pickle hover:bg-pickle-lg text-white py-2 px-4 w-48 rounded-lg h-12 font-normal transition-colors duration-200 ease-in-out"
+                            className="text-lg bg-pickle hover:bg-pickle-lg mb-5 text-white py-2 px-4 w-48 rounded-lg h-12 font-normal transition-colors duration-200 ease-in-out"
                             // onClick={() => setShowPreferences(true)}
                         >
                             Get Started
@@ -35,7 +35,7 @@ export const Homepage = () => {
                 </div>
                 <img src={home} alt="Bg" className="hidden md:block md:w-96 md:h-80 lg:w-[500px] lg:h-[500px] rounded-lg mt-6 md:mt-0" />
             </div>
-            <div className="flex flex-col md:flex-row h-auto w-auto bg-pickle justify-between rounded-lg my-auto py-9 px-4 space-y-4 md:space-y-0">
+            <div className="flex flex-col md:flex-row h-auto w-auto mt-5 bg-pickle justify-between rounded-lg my-auto py-9 px-4 space-y-4 md:space-y-0">
                 <div className="flex flex-col md:flex-row gap-2 md:gap-4">
                     <div className="flex justify-center md:justify-center lg:justify-start">
                         <LuSalad className="w-16 h-16 md:w-20 md:h-20" />

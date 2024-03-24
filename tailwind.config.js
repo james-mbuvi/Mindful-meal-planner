@@ -10,7 +10,8 @@ export default {
       colors: {
         'pickle': "#597D35",
         'pickle-lg': '#73a145',
-        'dm':'#2D2E2E'
+        'dm':'#2D2E2E',
+        
       }
 
   },
