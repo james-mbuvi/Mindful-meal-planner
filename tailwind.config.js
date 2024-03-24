@@ -13,7 +13,6 @@ export default {
         'dm':'#2D2E2E',
         
       }
-
   },
   plugins: [],
   }
