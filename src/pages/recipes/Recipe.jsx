@@ -1,68 +1,73 @@
-
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const RecipePage = () => {
+  const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
-  const [mealTime, setMealTime] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchRecipeData = async () => {
+    const fetchRecipe = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/meal/');
-        const data = await response.json();
-        const currentTime = new Date().getHours();
-        let selectedRecipe = null;
-
-        // time of the day
-        if (currentTime >= 6 && currentTime < 12) {
-          selectedRecipe = data.find(meal => meal.time === 'Morning');
-        } else if (currentTime >= 12 && currentTime < 17) {
-          selectedRecipe = data.find(meal => meal.time === 'Afternoon');
-        } else {
-          selectedRecipe = data.find(meal => meal.time === 'Evening');
+        const response = await fetch(`http://localhost:8000/meal/${id}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch recipe');
         }
-
-        setRecipe(selectedRecipe);
-        setMealTime(selectedRecipe ? selectedRecipe.time : '');
+        const data = await response.json();
+        setRecipe(data);
       } catch (error) {
-        console.error('Error fetching recipe data:', error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchRecipeData();
-  }, []);
+    fetchRecipe();
+  }, [id]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!recipe) {
+    return <div>Recipe not found</div>;
+  }
 
   return (
-    <div>
-      {recipe ? (
-        <>
-          <h1>{recipe.title}</h1>
-          <p>Serves: {recipe.serves}</p>
-          <img src={recipe.image} alt={recipe.title} />
-          <h2>Ingredients:</h2>
-          <ul>
-            {recipe.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
-            ))}
-          </ul>
-          <h2>Recipe:</h2>
-          <ol>
-            {recipe.recipe.map((step, index) => (
-              <li key={index}>{step}</li>
-            ))}
-          </ol>
-          <h2>Nutrition:</h2>
-          <ul>
-            {Object.entries(recipe.nutrition).map(([nutrient, value]) => (
-              <li key={nutrient}>
-                <strong>{nutrient}:</strong> {value}
-              </li>
-            ))}
-          </ul>
-        </>
-      ) : (
-        <p>Loading...</p>
-      )}
+    <div className="recipe-page">
+      <h1 className="recipe-title">{recipe.title}</h1>
+      <div className="recipe-image">
+        <img src={recipe.image} alt={recipe.title} />
+      </div>
+      <div className="recipe-details">
+        <h2>Ingredients:</h2>
+        <ul>
+          {recipe.ingredients.map((ingredient, index) => (
+            <li key={index}>{ingredient}</li>
+          ))}
+        </ul>
+        <h2>Recipe:</h2>
+        <ol>
+          {recipe.recipe.map((step, index) => (
+            <li key={index}>{step}</li>
+          ))}
+        </ol>
+        <h2>Nutrition:</h2>
+        <ul>
+          {Object.entries(recipe.nutrition).map(([nutrient, value]) => (
+            <li key={nutrient}>
+              <strong>{nutrient}:</strong> {value}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
+
+
