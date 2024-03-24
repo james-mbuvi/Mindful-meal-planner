@@ -27,7 +27,7 @@ export const Recipe = () => {
   }
 
   return (
-    <div className="dark:bg-dm text-dm dark:text-white">
+    <div className="flex flex-col lg:flex-row bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-white">
       <div className="lg:w-1/2">
         <img src={recipe.image} alt={recipe.title} className="w-full" />
       </div>
@@ -46,7 +46,7 @@ export const Recipe = () => {
           ))}
         </ol>
         <h2 className="text-xl font-bold mb-2">Nutritional Values</h2>
-        <div>
+        <div className="bg-pickle rounded-lg p-4">
           <p><span className="font-bold">Calories:</span> {recipe.nutrition.Calories}</p>
           <p><span className="font-bold">Fat:</span> {recipe.nutrition.Fat}</p>
           <p><span className="font-bold">Carbs:</span> {recipe.nutrition.Carbs}</p>
