@@ -66,7 +66,7 @@ export const Mealplanner = () => {
     const filteredMeals = mealsByDay[selectedDay ? daysOfWeek.indexOf(selectedDay) : 0];
 
     return (
-        <div className="dark:bg-dm text-dm dark:text-white">
+        <div className="dark:bg-dm text-dm dark:text-white ">
             <h1 className="font-bold text-center text-2xl underline">My Meal Plan</h1>
             <Days_of_the_week days={daysOfWeek} onClick={handleDayClick} />
             <div className="grid grid-cols-3 gap-3">
