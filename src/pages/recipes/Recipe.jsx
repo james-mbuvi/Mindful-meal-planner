@@ -27,11 +27,9 @@ export const Recipe = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-white">
-      <div className="lg:w-1/2">
-        <img src={recipe.image} alt={recipe.title} className="w-full" />
-      </div>
-      <div className="lg:w-1/2 p-6 bg-gray-100 dark:bg-gray-800">
+    <div className="flex flex-col lg:flex-row  dark:bg-dm text-dm dark:text-white">
+      
+      <div className="lg:w-1/2 p-6">
         <h1 className="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-200">{recipe.title}</h1>
         <h2 className="text-xl font-bold mb-2">Ingredients:</h2>
         <ul className="list-disc list-inside mb-4">
@@ -42,16 +40,20 @@ export const Recipe = () => {
         <h2 className="text-xl font-bold mb-2">Recipe:</h2>
         <ol className="list-decimal list-inside mb-4">
           {recipe.recipe.map((step, index) => (
-            <li key={index}>{step}</li>
+            <li classname="mb-3"key={index}>{step}</li>
           ))}
         </ol>
-        <h2 className="text-xl font-bold mb-2">Nutritional Values</h2>
         <div className="bg-pickle rounded-lg p-4">
+        <h2 className="text-xl font-bold mb-2 mt-3">Nutritional Values</h2>
+        
           <p><span className="font-bold">Calories:</span> {recipe.nutrition.Calories}</p>
           <p><span className="font-bold">Fat:</span> {recipe.nutrition.Fat}</p>
           <p><span className="font-bold">Carbs:</span> {recipe.nutrition.Carbs}</p>
           <p><span className="font-bold">Protein:</span> {recipe.nutrition.Protein}</p>
         </div>
+      </div>
+      <div className="w-1/2 ">
+        <img src={recipe.image} alt={recipe.title} className="w-full" />
       </div>
     </div>
   );
