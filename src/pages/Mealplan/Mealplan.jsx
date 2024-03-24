@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Days_of_the_week from '../../components/Days_of_the_week';
 import { MealCard } from '../../components/Mealcard';
+import { Link } from 'react-router-dom';
 
 
 
@@ -29,9 +30,7 @@ export const Mealplanner = () => {
         return <div>Error: {error}</div>;
       }
     
-    const handleMealClick = (meals) => {
-        
-    }
+   
 
     const [selectedDay, setSelectedDay] = useState(null);
 
@@ -40,16 +39,27 @@ export const Mealplanner = () => {
         setSelectedDay(day);
         
       };
+  const mealTime = ["Morning", "Lunch", "Super"]
+  const filteredMeals = meals.filter(meal => mealTime.includes(meal.time));
+   
   return (
-    <div>
-      <h1 className="font-bold text-center underline text-lg">My Meal Plan</h1>
+    <div className="dark:bg-dm text-dm dark:text-white">
+      <h1 className="font-bold text-center text-2xl underline text-lg">My Meal Plan</h1>
       <Days_of_the_week days={daysOfWeek} onClick={handleDayClick} />
-      <div className="grid grid-cols-3 gap-4">
-        {meals.map((meal) => (
-          <MealCard key={meal.id} meal={meal} onClick={handleMealClick} />
-        ))}
+      <div className="grid grid-cols-3 gap-3">
+        <Link to="/Recipe">
+          {meals.map((meal) => (
+            <MealCard key={meal.id} meal={meal} />
+          ))}
+        </Link>
       </div>
     </div>
   );
 }
+
+//repsonsivness of the days of the week
+// generating an ordered meal plan 
+//generating only 3 meal plans and not everything
+// the meal plans to be same width as the days of the week
+// generating random meal plans for different days
 

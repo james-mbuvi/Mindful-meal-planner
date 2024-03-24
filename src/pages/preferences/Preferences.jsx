@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 export const Preferences = () => {
   const [preferences, setPreferences] = useState({
@@ -19,11 +19,14 @@ export const Preferences = () => {
     }));
   };
 
-  return (
-    <div className="display-flex ml-24 dark:bg-dm">
-      <h1 className="text-center text-xl my-5">MEAL PLAN PREFERENCES</h1>
 
-      <div className="my-5">
+  return (
+    <div className="display-flex  dark:bg-dm text-dm dark:text-white ">
+      <h1 className="text-center text-xl mb-6underline">
+        MEAL PLAN PREFERENCES
+      </h1>
+
+      <div className=" ml-4 mb-6">
         <p>1. What is your dietery preferenes?</p>
         <div className="span my-2">
           <input
@@ -35,18 +38,18 @@ export const Preferences = () => {
             onChange={(e) => handleCheckboxChange(e, "dietary_preference")}
           />
           <label for="vegetarian" className="mr-5">
-            Vegetarian
+            Vegeterian
           </label>
 
           <input
             type="checkbox"
-            id="omnivore"
+            id="Omnivore"
             name="dietary_preferance"
-            value="omnivore"
+            value="Omnivore"
             className="mr-2"
             onChange={(e) => handleCheckboxChange(e, "dietary_preference")}
           />
-          <label for="omnivore" className="mr-5">
+          <label for="Omnivore" className="mr-5">
             Omnivore
           </label>
         </div>
@@ -78,74 +81,100 @@ export const Preferences = () => {
         </div>
       </div>
 
-      <div className="my-5">
-        <p>2. Do you have any allergies or dietary restrictions?</p>
+      <div className=" ml-4 mb-6">
+        <p>2. Do you have any food allergies or dietary restrictions??</p>
         <div className="span my-2">
           <input
             type="checkbox"
-            id="No allergies or restrictions"
+            id="Gluten_free"
             name="dietary_restrictions"
-            value="No allergies or restrictions"
+            value="Gluten_free"
             className="mr-2"
             onChange={(e) => handleCheckboxChange(e, "dietary_restrictions")}
           />
-          <label for="No allergies or restrictions" className="mr-5">
-            No allergies or restrictions
+          <label for="Gluten_free" className="mr-5">
+            Gluten_free
           </label>
 
           <input
             type="checkbox"
-            id="Dairy-free"
+            id="Nut_free"
             name="dietary_restrictions"
-            value="Dairy-free"
+            value="Nut_free"
             className="mr-2"
             onChange={(e) => handleCheckboxChange(e, "dietary_restrictions")}
           />
-          <label for="Dairy-free" className="mr-5">
-            Dairy-free
+          <label for="Nut_free" className="mr-5">
+            Nut_free
           </label>
         </div>
 
         <div className="span my-2">
           <input
             type="checkbox"
-            id="Gluten-free"
+            id="Dairy_free"
             name="dietary_restrictions"
-            value="Gluten-free"
+            value="Dairy_free"
             className="mr-2"
             onChange={(e) => handleCheckboxChange(e, "dietary_restrictions")}
           />
-          <label for="Gluten-free" className="mr-5">
-            Gluten-free
+          <label for="Dairy_free" className="mr-5">
+            Dairy_free
           </label>
 
           <input
             type="checkbox"
-            id="Nut free"
+            id="None"
             name="dietary_restrictions"
-            value="Nut free"
+            value="None"
             className="mr-2"
             onChange={(e) => handleCheckboxChange(e, "dietary_restrictions")}
           />
-          <label for="Nut free" className="mr-5">
-            Nut free
+          <label for="None" className="mr-5">
+            None
           </label>
         </div>
       </div>
 
-      <div className="my-2">
-        <p>3. Which cuisine do you prefer?</p>
+      <div className=" ml-4 mb-6">
+        <p>3. Which cuisine do you prefer??</p>
         <div className="span my-2">
+          <input
+            type="checkbox"
+            id="Mexican"
+            name="cuisine_preference"
+            value="Mexican"
+            className="mr-2"
+            onChange={(e) => handleCheckboxChange(e, "cuisine_preference")}
+          />
+          <label for="Mexican" className="mr-5">
+            Mexican
+          </label>
+
           <input
             type="checkbox"
             id="Asian"
             name="cuisine_preference"
             value="Asian"
             className="mr-2"
-            onChange={(e) => handleCheckboxChange(e, "cuisine_preferences")}
+            onChange={(e) => handleCheckboxChange(e, "cuisine_preference")}
           />
           <label for="Asian" className="mr-5">
             Asian
+          </label>
+        </div>
+
+        <div className="span my-2">
+          <input
+            type="checkbox"
+            id="Mediterranean"
+            name="cuisine_preference"
+            value="Mediterranean"
+            className="mr-2"
+            onChange={(e) => handleCheckboxChange(e, "cuisine_preference")}
+          />
+          <label for="Mediterranean" className="mr-5">
+            Mediterranean
           </label>
 
           <input
@@ -154,41 +183,15 @@ export const Preferences = () => {
             name="cuisine_preference"
             value="Kenyan"
             className="mr-2"
-            onChange={(e) => handleCheckboxChange(e, "cuisine_preferences")}
+            onChange={(e) => handleCheckboxChange(e, "cuisine_preference")}
           />
           <label for="Kenyan" className="mr-5">
             Kenyan
           </label>
         </div>
-
-        <div className="span my-2">
-          <input
-            type="checkbox"
-            id="Mexican"
-            name="cuisine_preference"
-            value="Mexican"
-            className="mr-2"
-            onChange={(e) => handleCheckboxChange(e, "cuisine_preferences")}
-          />
-          <label for="Mexican" className="mr-5">
-            Mexican
-          </label>
-
-          <input
-            type="checkbox"
-            id="Mediterranean"
-            name="cuisine_preference"
-            value="Mediterranean"
-            className="mr-2"
-            onChange={(e) => handleCheckboxChange(e, "cuisine_preferences")}
-          />
-          <label for="Mediterranean" className="mr-5">
-            Mediterranean
-          </label>
-        </div>
       </div>
 
-      <div className="my-5">
+      <div className="ml-4 mb-6">
         <p>4. Which of the following meal preferences best describes you?</p>
         <div className="span my-2">
           <input
@@ -197,7 +200,7 @@ export const Preferences = () => {
             name="meal_type_preference"
             value="Prefers quick and easy meal"
             className="mr-2"
-            onChange={(e) => handleCheckboxChange(e, "meal_type_preferences")}
+            onChange={(e) => handleCheckboxChange(e, "meal_type_preference")}
           />
           <label for="Prefers quick and easy meal" className="mr-5">
             Prefers quick and easy meal
@@ -209,21 +212,21 @@ export const Preferences = () => {
             name="meal_type_preference"
             value="Needs meals that are kid-friendly"
             className="mr-2"
-            onChange={(e) => handleCheckboxChange(e, "meal_type_preferences")}
+            onChange={(e) => handleCheckboxChange(e, "meal_type_preference")}
           />
           <label for="Needs meals that are kid-friendly" className="mr-5">
             Needs meals that are kid-friendly
           </label>
         </div>
 
-        <div className="span">
+        <div className="span my-2">
           <input
             type="checkbox"
             id="Enjoys cooking elaborate meals"
             name="meal_type_preference"
             value="Enjoys cooking elaborate meals"
             className="mr-2"
-            onChange={(e) => handleCheckboxChange(e, "meal_type_preferences")}
+            onChange={(e) => handleCheckboxChange(e, "meal_type_preference")}
           />
           <label for="Enjoys cooking elaborate meals" className="mr-5">
             Enjoys cooking elaborate meals
@@ -235,7 +238,7 @@ export const Preferences = () => {
             name="meal_type_preference"
             value="Require meals suitable for meal prep and batch cooking"
             className="mr-2"
-            onChange={(e) => handleCheckboxChange(e, "meal_type_preferences")}
+            onChange={(e) => handleCheckboxChange(e, "meal_type_preference")}
           />
           <label
             for="Require meals suitable for meal prep and batch cooking"
@@ -246,8 +249,10 @@ export const Preferences = () => {
         </div>
       </div>
 
-      <div className="display-flex ml-24 justify-center">
-        <button className="bg-pickle p-6 py-3 rounded-xl">Submit</button>
+      <div className="display-flex ml-24 justify-center my-8">
+        <button className="bg-pickle p-6 py-3 rounded-xl">
+          <Link to="/MyMealPlan">Submit</Link>
+        </button>
       </div>
     </div>
   );

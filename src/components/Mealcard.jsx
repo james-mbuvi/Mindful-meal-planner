@@ -1,24 +1,25 @@
 import React from "react";
 
-export const MealCard = ({ meal, onClick }) => {
+export const MealCard = ({ meal }) => {
   return (
-    <div
-      className="bg-gray-200 p-4 rounded-md cursor-pointer"
-      onClick={() => onClick(meal)}
-    >
+    <div className="bg-white p-6 rounded-md mx-4 md:mx-10 lg:mx-20 xl:mx-28 cursor-pointer dark:bg-dm">
       <img
         src={meal.image}
         alt={meal.title}
         className="w-full h-32 object-cover rounded-md mb-2"
       />
-      <div className="text-center">
-        <h3 className="font-semibold text-lg mb-1">{meal.title}</h3>
-        <p className="text-gray-600 mb-1">Prep Time: {meal.prepTime} mins</p>
-        <p className="text-gray-600 mb-1">Serving Size: {meal.servingSize}</p>
-        <p className="text-gray-600 mb-1">Meal Time: {meal.mealTime}</p>
+      <div className="text-center mb-1">
+        <h3 className="font-semibold text-lg">{meal.title}</h3>
+        <p className="text-sm md:text-base lg:text-lg">
+          Meal Time: {meal.time}
+        </p>
+        <p className="text-sm md:text-base lg:text-lg">
+          Serving Size: {meal.serves}
+        </p>
       </div>
     </div>
   );
+
 };
 
 
