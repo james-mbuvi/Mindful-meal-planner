@@ -45,18 +45,23 @@ export const Mealplanner = () => {
         return array;
     }
 
-    // Shuffle meals and distribute them across days and times
-    const shuffledMeals = shuffle(meals);
+    // Group meals by their time
+    const mealsByTime = mealTime.reduce((acc, time) => {
+        acc[time.toLowerCase()] = shuffle(meals.filter(meal => meal.time.toLowerCase() === time.toLowerCase()));
+        return acc;
+    }, {});
+
+    // Distribute meals across days and times
     const mealsByDay = Array.from({ length: daysOfWeek.length }, (_, dayIndex) => {
         return mealTime.reduce((acc, time, timeIndex) => {
-            const mealIndex = dayIndex * mealTime.length + timeIndex;
-            if (shuffledMeals[mealIndex]) {
-                acc[time] = [shuffledMeals[mealIndex]];
+            const mealsForTime = mealsByTime[time.toLowerCase()];
+            if (mealsForTime.length > 0) {
+                const mealIndex = dayIndex % mealsForTime.length;
+                acc[time.toLowerCase()] = [mealsForTime[mealIndex]];
             }
             return acc;
         }, {});
     });
-
     // Get meals for the selected day
     const filteredMeals = mealsByDay[selectedDay ? daysOfWeek.indexOf(selectedDay) : 0];
 
@@ -68,7 +73,7 @@ export const Mealplanner = () => {
                 {mealTime.map(time => (
                     <div key={time}>
                         <h2>{time}</h2>
-                        {filteredMeals[time] && filteredMeals[time].map((meal) => (
+                        {filteredMeals[time.toLowerCase()] && filteredMeals[time.toLowerCase()].map((meal) => (
                             <MealCard key={meal.id} meal={meal} />
                         ))}
                     </div>
