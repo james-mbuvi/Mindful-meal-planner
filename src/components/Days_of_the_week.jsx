@@ -12,7 +12,7 @@ const Days_of_the_week = ({ days, onClick }) => {
   return (
     <div className="space-x-6 text-center  text-xl mb-4  justify-stretch mt-4 ">
       {days.map((day, index) => (
-        <Weekdays key={index} day={day} onClick={onClick} />
+        <Weekdays key={index} day={day}/>
       ))}
     </div>
   );
