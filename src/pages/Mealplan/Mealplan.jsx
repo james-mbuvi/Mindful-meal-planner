@@ -67,12 +67,12 @@ export const Mealplanner = () => {
 
     return (
         <div className="dark:bg-dm text-dm dark:text-white pt-6">
-            <h1 className="font-bold text-center text-5xl dark:text-pickle-lg underline">My Meal Plan</h1>
+            <h1 className="font-bold text-center text-4xl dark:text-pickle-lg underline underline-offset-8 font-serif">My Meal Plan</h1>
             <Days_of_the_week days={daysOfWeek} onClick={handleDayClick} />
             <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mb-16">
                 {mealTime.map(time => (
                     <div key={time} className='text-center '>
-                        <h2 className='text-bold'>{time}</h2>
+                        <h2 className='font-bold text-xl font-serif'>{time}</h2>
                         {filteredMeals[time.toLowerCase()] && filteredMeals[time.toLowerCase()].map((meal) => (
                             <MealCard key={meal.id} meal={meal} />
                         ))}
