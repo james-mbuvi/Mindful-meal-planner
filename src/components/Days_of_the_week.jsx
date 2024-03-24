@@ -3,7 +3,7 @@ import { useState } from 'react';
 export const Weekdays = ({ day, onClick, hidden }) => {
   return (
     <div
-      className={`bg-pickle-lg hover:bg-pickle px-6 py-1 rounded-full text-xl dark:text-pickle font-medium inline-block cursor-pointer text-white dark:bg-white ${hidden ? 'hidden md:inline-block' : ''}`}
+      className={`bg-pickle hover:bg-pickle px-6 py-1 rounded-full text-base dark:text-pickle font-medium inline-block cursor-pointer text-white dark:bg-white ${hidden ? 'hidden md:inline-block' : ''}`}
       onClick={() => onClick(day)}
     >
       {day}
