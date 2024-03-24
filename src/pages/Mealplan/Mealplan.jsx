@@ -66,13 +66,13 @@ export const Mealplanner = () => {
     const filteredMeals = mealsByDay[selectedDay ? daysOfWeek.indexOf(selectedDay) : 0];
 
     return (
-        <div className="dark:bg-dm text-dm dark:text-white ">
-            <h1 className="font-bold text-center text-2xl underline">My Meal Plan</h1>
+        <div className="dark:bg-dm text-dm dark:text-white pt-6">
+            <h1 className="font-bold text-center text-5xl dark:text-pickle-lg underline">My Meal Plan</h1>
             <Days_of_the_week days={daysOfWeek} onClick={handleDayClick} />
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mb-16">
                 {mealTime.map(time => (
                     <div key={time} className='text-center '>
-                        <h2>{time}</h2>
+                        <h2 className='text-bold'>{time}</h2>
                         {filteredMeals[time.toLowerCase()] && filteredMeals[time.toLowerCase()].map((meal) => (
                             <MealCard key={meal.id} meal={meal} />
                         ))}

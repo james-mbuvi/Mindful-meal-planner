@@ -27,12 +27,12 @@ export const Recipe = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row gap-[20px] dark:bg-dm text-dm dark:text-white px-2 m-1">
+    <div className="flex flex-col shadow-2xl rounded lg:flex-row gap-[20px]  m-5 dark:bg-dm text-dm dark:text-white px-5 pt-2 ">
 
       <div className="flex flex-col w-full">
         <div>
-          <h1 className="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-200">{recipe.title}</h1>
-          <h2 className="text-xl font-bold mb-2">Ingredients:</h2>
+          <h1 className="text-5xl font-bold mb-4 dark:text-pickle-lg text-pickle-lg">{recipe.title}</h1>
+          <h2 className="text-2xl font-bold mb-2">Ingredients:</h2>
           <ul className="list-disc list-inside mb-4">
             {recipe.ingredients.map((ingredient, index) => (
               <li key={index}>{ingredient}</li>
@@ -40,7 +40,7 @@ export const Recipe = () => {
           </ul>
         </div>
         <div>
-          <h2 className="text-xl font-bold mb-2">Recipe:</h2>
+          <h2 className="text-2xl font-bold mb-2">Recipe:</h2>
           <ol className="list-decimal list-inside mb-4">
             {recipe.recipe.map((step, index) => (
               <li className="mb-3" key={index}>{step}</li>
@@ -52,13 +52,13 @@ export const Recipe = () => {
         <div className="w-full h-1/2">
           <img src={recipe.image} alt={recipe.title} className="w-full h-full object-cover" />
         </div>
-        <div className="bg-pickle rounded-lg p-4 mt-2">
-          <h2 className="text-xl font-bold mb-2 mt-3">Nutritional Values</h2>
+        <div className="bg-pickle-lg rounded-lg px-4 py-5 mt-2">
+          <h2 className="text-3xl font-bold mb-2 mt-3">Nutritional Values</h2>
 
-          <p><span className="font-bold">Calories:</span> {recipe.nutrition.Calories}</p>
-          <p><span className="font-bold">Fat:</span> {recipe.nutrition.Fat}</p>
-          <p><span className="font-bold">Carbs:</span> {recipe.nutrition.Carbs}</p>
-          <p><span className="font-bold">Protein:</span> {recipe.nutrition.Protein}</p>
+          <p className='text-2xl'><span className="font-bold text-2xl mr-5">Calories:</span> {recipe.nutrition.Calories}</p>
+          <p className='text-2xl'><span className="font-bold text-2xl mr-20">Fat:</span> {recipe.nutrition.Fat}</p>
+          <p className='text-2xl'><span className="font-bold text-2xl mr-12">Carbs:</span> {recipe.nutrition.Carbs}</p>
+          <p className='text-2xl'> <span className="font-bold text-2x mr-8">Protein:</span> {recipe.nutrition.Protein}</p>
         </div>
       </div>
     </div>
