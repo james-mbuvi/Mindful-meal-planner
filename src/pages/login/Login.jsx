@@ -33,7 +33,6 @@ export default function Login() {
     }
   }
 
-  // Password reset
   const handlePasswordReset = () => {
     const email = prompt("Enter your email");
     sendPasswordResetEmail(auth, email)
@@ -62,11 +61,11 @@ export default function Login() {
               <input
                 type={passwordVisible ? 'text' : 'password'}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full focus:outline-none text-black dark:bg-white" // Added focus:outline-none to remove default outline on focus
+                className="w-full focus:outline-none text-black dark:bg-white" 
               />
               <button
                 type="button"
-                className="ml-2 dark:bg-dm" // Adjusted margin to align eye icon with input field
+                className="ml-2 dark:bg-dm" 
                 onClick={togglePasswordVisibility}
               >
                 <FontAwesomeIcon icon={passwordVisible ? faEyeSlash : faEye} />
